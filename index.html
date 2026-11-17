@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="白色皮革三折手账风格个人作品集：点击带子打开手账，放入卡片便签，翻阅作品。" />
+  <title>Tale of Notebook · 纸上来信</title>
+  <link rel="stylesheet" href="./styles.css?v=20261117h" />
+</head>
+<body>
+  <!-- 装饰图标：樱花 / 冰晶 / 蝴蝶 / 小星星 -->
+  <svg class="svg-sprite" width="0" height="0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="butterflyGradient" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#eec7cd" />
+        <stop offset="50%" stop-color="#c9dce7" />
+        <stop offset="100%" stop-color="#ddd0e4" />
+      </linearGradient>
+    </defs>
+    <symbol id="icon-sakura" viewBox="0 0 48 48">
+      <g fill="currentColor">
+        <ellipse cx="24" cy="14" rx="5.2" ry="9" />
+        <ellipse cx="24" cy="14" rx="5.2" ry="9" transform="rotate(72 24 24)" />
+        <ellipse cx="24" cy="14" rx="5.2" ry="9" transform="rotate(144 24 24)" />
+        <ellipse cx="24" cy="14" rx="5.2" ry="9" transform="rotate(216 24 24)" />
+        <ellipse cx="24" cy="14" rx="5.2" ry="9" transform="rotate(288 24 24)" />
+      </g>
+      <circle cx="24" cy="24" r="3.4" fill="#c9a86c" />
+    </symbol>
+    <symbol id="icon-snowflake" viewBox="0 0 48 48">
+      <g stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none">
+        <path d="M24 5v38M8 14.5l32 19M40 14.5l-32 19" />
+        <path d="M24 11l5 4M24 11l-5 4M24 37l5-4M24 37l-5-4" />
+        <path d="M14 17l1 6M14 17l6-2M34 31l-1-6M34 31l-6 2" />
+        <path d="M34 17l-1 6M34 17l-6-2M14 31l1-6M14 31l6 2" />
+      </g>
+    </symbol>
+    <symbol id="icon-butterfly" viewBox="0 0 48 48">
+      <path d="M23.5 22C17.5 10 7.5 8.5 6.5 16.5c-.8 6.5 7 10.8 17 10z" fill="url(#butterflyGradient)" />
+      <path d="M24.5 22C30.5 10 40.5 8.5 41.5 16.5c.8 6.5-7 10.8-17 10z" fill="url(#butterflyGradient)" />
+      <path d="M23 23c-5 5-8 11-4.5 15 2.8 3 6.5-2 5.5-7.5" fill="#ead7e4" />
+      <path d="M25 23c5 5 8 11 4.5 15-2.8 3-6.5-2-5.5-7.5" fill="#dbe8e2" />
+      <path d="M24 21v15" stroke="#8a7968" stroke-width="2" stroke-linecap="round" />
+      <path d="M22 18c-2-3-4-4-6-4M26 18c2-3 4-4 6-4" stroke="#8a7968" stroke-width="1.3" fill="none" />
+    </symbol>
+    <symbol id="icon-sparkle" viewBox="0 0 24 24">
+      <path d="M12 1l2.2 7.3L21 11l-6.8 2.7L12 21l-2.2-7.3L3 11l6.8-2.7z" fill="currentColor" />
+    </symbol>
+  </svg>
+
+  <div class="ambient" aria-hidden="true">
+    <span class="paper-bit bit-1"></span>
+    <span class="paper-bit bit-2"></span>
+    <span class="paper-bit bit-3"></span>
+    <svg class="ambient-decor sakura-a"><use href="#icon-sakura"></use></svg>
+    <svg class="ambient-decor snow-a"><use href="#icon-snowflake"></use></svg>
+    <svg class="ambient-decor butterfly-a"><use href="#icon-butterfly"></use></svg>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark"><svg><use href="#icon-sakura"></use></svg></span>
+      <span class="brand-name">纸上来信 <small>TALE OF NOTEBOOK</small></span>
+    </div>
+    <p class="top-tip" id="topTip">点击带子，打开这一本小小的手账</p>
+    <button class="sound-btn" id="soundBtn" type="button" aria-pressed="true" aria-label="切换音效">
+      <span aria-hidden="true">♪</span><span class="sound-label">音效开</span>
+    </button>
+  </header>
+
+  <main class="stage" id="stage">
+    <div class="notebook" id="notebook" data-state="closed">
+      <!-- 左页：四个插袋 -->
+      <section class="panel panel-left" id="panelLeft" aria-label="左页插袋">
+        <div class="panel-face panel-front panel-leather">
+          <div class="panel-tag">POCKETS · 01</div>
+
+          <div class="pockets" id="pockets">
+            <div class="slot slot-card" data-accepts="identity" data-type="card" data-label="我是谁">
+              <div class="slot-well"></div>
+              <div class="slot-cover"><span>我是谁</span></div>
+            </div>
+
+            <div class="slot slot-note-short" data-accepts="intro" data-type="note-short" data-label="小小的介绍">
+              <div class="slot-well"></div>
+              <div class="slot-cover"><span>小小的介绍</span></div>
+            </div>
+
+            <div class="slot slot-note-long" data-accepts="preference" data-type="note-long" data-label="心爱之物">
+              <div class="slot-well"></div>
+              <div class="slot-cover"><span>心爱之物</span></div>
+            </div>
+
+            <div class="slot slot-card" data-accepts="philosophy" data-type="card" data-label="灵感的云集">
+              <div class="slot-well"></div>
+              <div class="slot-cover"><span>灵感的云集</span></div>
+            </div>
+          </div>
+
+          <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+          <p class="pocket-footnote">把四张小纸片放进对应的口袋吧</p>
+        </div>
+        <div class="panel-face panel-back panel-leather"></div>
+      </section>
+
+      <!-- 中页：纸张、活页环与塑料开口袋 -->
+      <section class="panel panel-center" id="panelCenter" aria-label="中页纸张">
+        <div class="panel-face panel-front panel-leather">
+          <div class="panel-tag center-tag">PAPER · 02</div>
+          <div class="plastic-pocket" aria-hidden="true">
+            <span class="plastic-tab"></span>
+            <span class="plastic-card"></span>
+          </div>
+          <div class="end-sticker" id="endSticker" aria-hidden="true">
+            <span>翻完啦</span>
+            <small>刚刚是我最后一个作品了</small>
+          </div>
+        </div>
+        <div class="panel-face panel-back panel-leather"></div>
+      </section>
+
+      <!-- 右页：当前作品介绍 -->
+      <section class="panel panel-right" id="panelRight" aria-label="右页作品介绍与封面">
+        <div class="panel-face panel-front panel-leather">
+          <div class="right-detail" id="rightDetail"></div>
+        </div>
+
+        <!-- 合上时朝外的封面 -->
+        <div class="panel-face panel-back cover-face">
+          <div class="cover-stitch"></div>
+          <div class="cover-title">Tale of Notebook</div>
+          <div class="cover-window">
+            <div class="cover-window-inner">
+              <span class="cover-sweet">Sweet</span>
+              <span class="cover-tales">Tales</span>
+              <div class="cover-illustration" aria-hidden="true">
+                <span class="cover-cup"></span>
+                <span class="cover-cherry"></span>
+                <span class="cover-star">★</span>
+                <span class="cover-paw">✿</span>
+              </div>
+              <span class="cover-jp">このおいしい物語</span>
+            </div>
+          </div>
+          <div class="cover-bottom">A LITTLE COLLECTION OF DAYS</div>
+          <div class="cover-corner"></div>
+        </div>
+      </section>
+
+      <!-- 活页环固定在左、中两页之间 -->
+      <div class="rings" id="rings" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <!-- 纸张层：左页纸与中页纸可翻，皮革插袋区与右页介绍区不动 -->
+      <div class="paper-spread" id="paperSpread" aria-hidden="true">
+        <div class="paper-page left-page" id="leftPaper">
+          <div class="paper-content" id="leftPaperContent"></div>
+        </div>
+        <div class="paper-page center-page" id="centerPaper">
+          <div class="paper-content" id="centerPaperContent"></div>
+        </div>
+        <div class="flipping-sheet" id="flippingSheet">
+          <div class="sheet-face sheet-front" id="sheetFront"></div>
+          <div class="sheet-face sheet-back" id="sheetBack"></div>
+        </div>
+      </div>
+
+      <!-- 粗布带：合上时绑在封面，摊开后放到旁边 -->
+      <button class="strap" id="strap" type="button" aria-label="点击带子打开或合上手账">
+        <span class="strap-pattern"></span>
+        <span class="strap-buckle"></span>
+      </button>
+    </div>
+
+    <!-- 摊开后从下往上滑入的卡片与便签 -->
+    <div class="floating-items" id="floatingItems">
+      <button class="float-item item-card" type="button" data-id="identity" data-type="card" data-label="个人信息" data-x="5%" data-y="18%" data-rot="-9deg">
+        <span class="item-pin"></span>
+        <span class="item-heading">ID CARD</span>
+        <strong>个人信息</strong>
+        <span class="item-summary">姓名 · 城市 · 职业</span>
+        <span class="insert-label">我是谁</span>
+      </button>
+
+      <button class="float-item item-note item-note-short" type="button" data-id="intro" data-type="note-short" data-label="个人简介 / 生涯" data-x="94%" data-y="21%" data-rot="7deg">
+        <span class="item-pin"></span>
+        <strong>小小的介绍</strong>
+        <span class="item-summary">关于我与我的旅程</span>
+        <span class="insert-label">小小的介绍</span>
+      </button>
+
+      <button class="float-item item-note item-note-long" type="button" data-id="preference" data-type="note-long" data-label="个人喜好" data-x="6%" data-y="84%" data-rot="6deg">
+        <span class="item-pin"></span>
+        <strong>心爱之物</strong>
+        <span class="item-summary">喜欢的颜色、声音与小东西</span>
+        <span class="insert-label">心爱之物</span>
+      </button>
+
+      <button class="float-item item-card" type="button" data-id="philosophy" data-type="card" data-label="创作理念" data-x="94%" data-y="82%" data-rot="-6deg">
+        <span class="item-pin"></span>
+        <span class="item-heading">CREED</span>
+        <strong>创作理念</strong>
+        <span class="item-summary">把细碎的光收藏起来</span>
+        <span class="insert-label">灵感的云集</span>
+      </button>
+    </div>
+
+    <!-- 点击卡片/便签后放大与编辑 -->
+    <div class="modal" id="itemModal" hidden>
+      <div class="modal-backdrop" data-close="true"></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="modalClose" type="button" aria-label="关闭">×</button>
+        <span class="modal-kicker" id="modalKicker">CARD</span>
+        <h3 id="modalTitle">个人信息</h3>
+        <div class="modal-editor" id="modalEditor" contenteditable="true" spellcheck="false"></div>
+        <p class="modal-hint">内容可以直接编辑，便签会自动变长（不会短于初始长度）。</p>
+      </div>
+    </div>
+
+    <div class="orientation-overlay" id="orientationOverlay" hidden>
+      <div class="orientation-card">
+        <span class="orientation-icon">▭</span>
+        <strong>将手机横过来体验感更佳</strong>
+        <small>点击空白处也可以关闭提示</small>
+      </div>
+    </div>
+  </main>
+
+  <script src="./script.js?v=20261117h"></script>
+</body>
+</html>
