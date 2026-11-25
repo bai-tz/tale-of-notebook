@@ -1,0 +1,15 @@
+{
+  "name": "馋伴 · 和嘴馋做朋友",
+  "short_name": "馋伴",
+  "description": "记录饮食、陪伴打卡的暖心小助手",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4F7F0",
+  "theme_color": "#F4F7F0",
+  "icons": [
+    { "src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
